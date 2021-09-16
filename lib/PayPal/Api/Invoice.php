@@ -1247,7 +1247,7 @@ class Invoice extends PayPalResourceModel
         ArgumentValidator::validate($transactionId, "TransactionId");
         $payLoad = "";
         self::executeCall(
-            "/v1/invoicing/invoices/{$this->getId()}/payment-records/{$transactionId}",
+            "/v1/invoicing/invoices/{$this->getId()}/payment-records/$transactionId",
             "DELETE",
             $payLoad,
             null,
@@ -1270,7 +1270,7 @@ class Invoice extends PayPalResourceModel
         ArgumentValidator::validate($transactionId, "TransactionId");
         $payLoad = "";
         self::executeCall(
-            "/v1/invoicing/invoices/{$this->getId()}/refund-records/{$transactionId}",
+            "/v1/invoicing/invoices/{$this->getId()}/refund-records/$transactionId",
             "DELETE",
             $payLoad,
             null,

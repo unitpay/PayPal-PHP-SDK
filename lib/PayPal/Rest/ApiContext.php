@@ -168,6 +168,6 @@ class ApiContext
             }
         }
 
-        return $addr . $pid . $_SERVER['REQUEST_TIME'] . mt_rand(0, 0xffff);
+        return $addr . $pid . $_SERVER['REQUEST_TIME'] . random_int(0, 0xffff);
     }
 }

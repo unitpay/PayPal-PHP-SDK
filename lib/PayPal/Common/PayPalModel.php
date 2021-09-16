@@ -175,7 +175,7 @@ class PayPalModel
         foreach ($param as $k => $v) {
             if ($v instanceof PayPalModel) {
                 $ret[$k] = $v->toArray();
-            } elseif (is_array($v) && sizeof($v) <= 0) {
+            } elseif (is_array($v) && count($v) <= 0) {
                 $ret[$k] = array();
             } elseif (is_array($v)) {
                 $ret[$k] = $this->_convertToArray($v);
@@ -186,7 +186,7 @@ class PayPalModel
         // If the array is empty, which means an empty object,
         // we need to convert array to StdClass object to properly
         // represent JSON String
-        if (sizeof($ret) <= 0) {
+        if (count($ret) <= 0) {
             $ret = new PayPalModel();
         }
         return $ret;
@@ -291,7 +291,7 @@ class PayPalModel
         // Because of PHP Version 5.3, we cannot use JSON_UNESCAPED_SLASHES option
         // Instead we would use the str_replace command for now.
         // TODO: Replace this code with return json_encode($this->toArray(), $options | 64); once we support PHP >= 5.4
-        if (version_compare(phpversion(), '5.4.0', '>=') === true) {
+        if (version_compare(PHP_VERSION, '5.4.0', '>=') === true) {
             return json_encode($this->toArray(), $options | 64);
         }
         return str_replace('\\/', '/', json_encode($this->toArray(), $options));

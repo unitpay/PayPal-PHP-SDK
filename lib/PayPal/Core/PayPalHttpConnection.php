@@ -88,7 +88,7 @@ class PayPalHttpConnection
             return strlen($data);
         }
         
-        list($key, $value) = explode(":", $trimmedData, 2);
+        [$key, $value] = explode(":", $trimmedData, 2);
 
         $key = trim($key);
         $value = trim($value);
@@ -175,7 +175,7 @@ class PayPalHttpConnection
         //Retry if Certificate Exception
         if (curl_errno($ch) == 60) {
             $this->logger->info("Invalid or no certificate authority found - Retrying using bundled CA certs file");
-            curl_setopt($ch, CURLOPT_CAINFO, dirname(__FILE__) . '/cacert.pem');
+            curl_setopt($ch, CURLOPT_CAINFO, __DIR__ . '/cacert.pem');
             $result = curl_exec($ch);
             //Retrieve Response Status
             $httpStatus = curl_getinfo($ch, CURLINFO_HTTP_CODE);

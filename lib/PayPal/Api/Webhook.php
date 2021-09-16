@@ -4,7 +4,6 @@ namespace PayPal\Api;
 
 use PayPal\Common\PayPalResourceModel;
 use PayPal\Validation\ArgumentValidator;
-use PayPal\Api\WebhookList;
 use PayPal\Rest\ApiContext;
 use PayPal\Validation\UrlValidator;
 
